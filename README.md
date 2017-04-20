@@ -5,8 +5,9 @@
 |城市\类别|餐厅|酒店|景点|
 |:-:|-|-|-|
 |北京|√|√|√|
-|上海|√|√|√
-|广州|√|√|√
+|上海|√|√|√|
+|广州|√|√|√|
+
 **字段：**
 >{'用户ID': user_id, '店铺ID': merchant_id, '用户名': username, '地址': address, '性别': gender, '恋爱状况': relationship, '星座': sign, '生日': birthday}
 
@@ -18,4 +19,4 @@
 `{"shop_url": "http://www.dianping.com/shop/10342086/review_more?pageno=3", "user_url": "http://www.dianping.com/member/17219648"}`
 
 ---
-[爬虫源码]（）
+[爬虫源码]（https://github.com/RyanYang-yxr/DianPing_UserInfo_Spider/blob/master/user_profile.py）
