@@ -137,8 +137,13 @@ class DianPing(object):
 
 
     def save(self, info):
-        f = codecs.open('restaurants/user_one_pageb.json', 'a+', 'utf-8')
-        # f = open('info.txt', 'w')
+        # 定义目标文件保存的位置
+        try:
+            f = codecs.open('restaurants/guangzhou_canting.json', 'a+', 'utf-8')
+        except:
+            # 如果没有该目标文件夹，则创建一个
+            os.mkdir('restaurants')
+            f = codecs.open('restaurants/guangzhou_canting.json', 'a+', 'utf-8') 
         f.write(info + "\n")
         f.close()
 
@@ -177,8 +182,9 @@ class DianPing(object):
 
 if __name__ == '__main__':
     spider = DianPing()
+    # 这里选择要打开的目标文件的位置
     f = open('b_c/one_page.json_.json','r')
-
+    # 创建20个线程
     ts = []
     for num in range(1, 20):
         t = threading.Thread(target=spider.main, args=(f,))
@@ -194,3 +200,35 @@ if __name__ == '__main__':
 
     print '----------------------THE END-------------------------'
     logging.info('----------------------THE END-------------------------')
+
+# 上面的主函数一次只能解析一个文件，下面的备用主函数可遍历当前目录下所有目标文件，并解析
+# if __name__ == '__main__':
+#     spider = DianPing()
+      # 定义要遍历的文件夹初始位置
+#     list_dirs = os.walk('./')
+#     # print list_dirs
+#     for root,dirs,files in list_dirs:
+#         for ff in files:
+              # 拼凑目标文件路径
+#             f_path = os.path.join(root, ff)
+              # 如果目标文件名称符合要求，则执行函数
+#             if ff == 'one_page.json_.json' or ff =='three_page.json_.json':
+#                 # print ff
+#                 # print f_path
+#                 with open(f_path, 'r') as f:
+                      # 在这里创建20个线程
+#                     ts = []
+#                     for num in range(1, 20):
+#                         t = threading.Thread(target=spider.main, args=(f,))
+#                         t.start()
+#                         # t.setDaemon(False)
+#                         ts.append(t)
+
+#                     for t in ts:
+#                         t.join()
+#             else:
+#                 continue
+
+#     print '----------------------THE END-------------------------'
+#     logging.info('----------------------THE END-------------------------')
+
